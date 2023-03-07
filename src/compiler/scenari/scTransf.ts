@@ -1,6 +1,6 @@
-import {Node, SourceFile, TransformationContext, EmitFlags} from "../types.js";
-import {visitEachChild, visitNode} from "../visitorPublic.js";
 import {addEmitFlags} from "../factory/emitNode.js";
+import {EmitFlags,Node, SourceFile, TransformationContext} from "../types.js";
+import {visitEachChild, visitNode} from "../visitorPublic.js";
 
 export default function noAsciiEscaping(context: TransformationContext) {
     return (source: SourceFile) => {
@@ -10,5 +10,5 @@ export default function noAsciiEscaping(context: TransformationContext) {
         }
 
         return visitNode(source, visit) as SourceFile;
-    }
+    };
 }
