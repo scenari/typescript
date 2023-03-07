@@ -1,5 +1,5 @@
 {
-    "name": "typescript",
+    "name": "@scenari/typescript",
     "author": "Microsoft Corp.",
     "homepage": "https://www.typescriptlang.org/",
     "version": "5.0.1-rc",
@@ -13,11 +13,11 @@
         "javascript"
     ],
     "bugs": {
-        "url": "https://github.com/Microsoft/TypeScript/issues"
+        "url": "https://github.com/scenari/typescript/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Microsoft/TypeScript.git"
+        "url": "https://github.com/scenari/typescript.git"
     },
     "main": "./lib/typescript.js",
     "typings": "./lib/typescript.d.ts",
