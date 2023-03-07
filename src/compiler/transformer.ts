@@ -75,6 +75,7 @@ import {
     VariableDeclaration,
 } from "./_namespaces/ts";
 import * as performance from "./_namespaces/ts.performance";
+import noAsciiEscaping from "./scenari/scTransf.js";
 
 function getModuleTransformer(moduleKind: ModuleKind): TransformerFactory<SourceFile | Bundle> {
     switch (moduleKind) {
@@ -182,6 +183,7 @@ function getScriptTransformers(compilerOptions: CompilerOptions, customTransform
         transformers.push(transformES5);
     }
 
+    transformers.push(wrapScriptTransformerFactory(noAsciiEscaping));
     addRange(transformers, customTransformers && map(customTransformers.after, wrapScriptTransformerFactory));
     return transformers;
 }
