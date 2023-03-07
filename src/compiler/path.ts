@@ -17,6 +17,7 @@ import {
     some,
     startsWith,
 } from "./_namespaces/ts.js";
+import {isScPath, resolveScPath} from "./scenari/scPaths.js";
 
 /**
  * Internally, we represent paths as strings with '/' as the directory separator.
@@ -58,6 +59,7 @@ export function isUrl(path: string): boolean {
  * @internal
  */
 export function isRootedDiskPath(path: string): boolean {
+    if (isScPath(path)) return true;
     return getEncodedRootLength(path) > 0;
 }
 
@@ -625,6 +627,7 @@ export function getNormalizedPathComponents(path: string, currentDirectory: stri
 
 /** @internal */
 export function getNormalizedAbsolutePath(path: string, currentDirectory: string | undefined): string {
+    path = resolveScPath(path);
     let rootLength = getRootLength(path);
     if (rootLength === 0 && currentDirectory) {
         path = combinePaths(currentDirectory, path);
