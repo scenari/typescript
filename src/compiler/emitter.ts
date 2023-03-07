@@ -1062,6 +1062,7 @@ export function emitFiles(
     }
 
     function getSourceMapDirectory(mapOptions: SourceMapOptions, filePath: string, sourceFile: SourceFile | undefined) {
+
         if (mapOptions.sourceRoot) return host.getCommonSourceDirectory();
         if (mapOptions.mapRoot) {
             let sourceMapDir = normalizeSlashes(mapOptions.mapRoot);
@@ -1076,6 +1077,7 @@ export function emitFiles(
             }
             return sourceMapDir;
         }
+        if (sourceFile) return getDirectoryPath(normalizePath(sourceFile.fileName));
         return getDirectoryPath(normalizePath(filePath));
     }
 
