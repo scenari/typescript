@@ -1,13 +1,14 @@
 import * as fs from "fs";
 import * as path from "path";
 export const SC_WUI_SCHEME = "sc+wui:";
+export const SC_MODEL_TSCONFIG = "tsconfig.model.json";
 
 let searchDir = __dirname;
 let wuiRootDir: string | undefined;
 
 while (!wuiRootDir) {
-    const testDir = path.resolve(searchDir, "Wui_Bootstrap");
-    if (fs.existsSync(testDir)) wuiRootDir = testDir;
+    const testFile = path.resolve(searchDir, SC_MODEL_TSCONFIG);
+    if (fs.existsSync(testFile)) wuiRootDir = searchDir;
     const newSearchDir = path.dirname(searchDir);
     if (newSearchDir === searchDir) break;
     searchDir = newSearchDir;
